@@ -1,10 +1,10 @@
 <template>
   <v-container ma-0 pa-0 fill-height class="align-stretch" fluid>
     <v-row justify="center" align="stretch">
-      <v-col justify="center" align="center">
+      <v-col cols="12" md="6" justify="center" align="center">
         <v-container fill-height class="align-content-center ">
           <v-row justify="center">
-            <v-col class="mr-10" cols="6">
+            <v-col class="mx-auto mr-md-12" cols="11" sm="8">
               <v-card>
                 <v-card-title>sign up</v-card-title>
                 <v-card-text>
@@ -54,10 +54,15 @@
           </v-row>
         </v-container>
       </v-col>
-      <v-col class="blue-grey lighten-5">
-        <v-container fill-height class="align-content-center ">
+      <v-col cols="12" md="6" class="blue-grey lighten-5 ">
+        <v-container fill-height class="mr-12 align-content-center ">
           <v-row justify="center">
-            <v-col class="ml-10" cols="5">
+            <v-col
+              class="mx-auto ml-md-12 text-center "
+              cols="12"
+              sm="6"
+              lg="5"
+            >
               <h1 class="display-3">Easy way to ,</h1>
               <p class="title mt-2	">
                 track <span class="success">Profits</span> /
@@ -66,7 +71,7 @@
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col class=" text-center" cols="5"
+            <v-col class="mx-auto ml-sm-12 text-center" cols="12" md="5"
               ><v-btn large class="px-12" outlined to="/login" nuxt
                 >log in</v-btn
               ></v-col
@@ -121,21 +126,11 @@ export default {
       return this.$refs.signUpForm.validate()
     },
     async register() {
-      // if (this.validateForm()) {
-      //   this.$axios
-      //     .post('/testlogin', {
-      //       name: this.form.name,
-      //       password: this.form.password,
-      //       email: this.form.email
-      //     })
-      //     .then((response) => console.log(response, 'response :) '))
-      // }
-
-      this.$axios.post({ data: this.form })
-
-      await this.$auth.login({ data: this.form })
-
-      this.$router.push('/dashboard')
+      if (this.validateForm()) {
+        await this.$axios.$post('/register', this.form)
+        this.$auth.login({ data: this.form })
+        this.$router.push('/dashboard')
+      }
     }
   }
 }

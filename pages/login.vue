@@ -1,15 +1,15 @@
 <template>
   <v-container ma-0 pa-0 fill-height class="align-stretch" fluid>
     <v-row justify="center" align="stretch">
-      <v-col class="blue-grey lighten-5">
-        <v-container fill-height class="align-content-center ">
-          <v-row justify="center">
-            <v-col class="ml-10" cols="5"
+      <v-col class="blue-grey lighten-5 ">
+        <v-container fill-height class="align-content-center">
+          <v-row class="ml-md-10" justify="center">
+            <v-col class="ml-6" cols="12" md="6"
               ><h1 class="display-3">Don't Have an account?</h1></v-col
             >
           </v-row>
-          <v-row justify="end">
-            <v-col class="mt-6" cols="8"
+          <v-row class=" " justify="end">
+            <v-col class="text-center mx-auto mt-6" cols="12" md="4"
               ><v-btn large class="px-11" outlined to="/signup" nuxt
                 >create account</v-btn
               ></v-col
@@ -20,7 +20,7 @@
       <v-col justify="center" align="center">
         <v-container fill-height class="align-content-center ">
           <v-row justify="center">
-            <v-col class="mr-10" cols="6">
+            <v-col class="mr-md-12" cols="11" md="8">
               <v-card>
                 <v-card-title>Log in</v-card-title>
                 <v-card-text>
@@ -74,9 +74,6 @@ export default {
   },
   methods: {
     async login() {
-      //   if (this.validateForm()) {
-      //   }
-
       await this.$auth.login({ data: this.form })
       this.$router.push('/dashboard')
     }

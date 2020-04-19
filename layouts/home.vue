@@ -1,7 +1,6 @@
 <template>
-  <v-app>
-    <HomeNavBar />
-
+  <v-app class="bg">
+    <HomeNavBar class="bg" />
     <v-content>
       <nuxt />
     </v-content>
@@ -18,4 +17,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.bg {
+  background-color: #212b35;
+}
+</style>
