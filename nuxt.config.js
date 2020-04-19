@@ -30,7 +30,33 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['./plugins/mixins/user.js'],
+  /*
+   ** auth module config
+   */
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/login',
+            method: 'post',
+            propertyName: 'token'
+          },
+          user: { url: '/user', method: 'get', propertyName: 'user' },
+          logout: { url: '/logout', method: 'post' }
+        }
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+        // autoFetchUser: true
+      }
+    }
+  },
+  redirect: {
+    login: '/login',
+    home: '/'
+  },
+
   /*
    ** Nuxt.js dev-modules
    */
@@ -45,6 +71,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
@@ -54,7 +81,8 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'http://127.0.0.1:8000/api'
+    baseURL: 'https://tranquil-spire-25035.herokuapp.com/api',
+    headers: { 'Access-Control-Allow-Origin': '*' }
   },
   /*
    ** vuetify module configuration
@@ -75,13 +103,13 @@ export default {
           success: colors.green.accent3
         },
         light: {
-          primary: '#3f51b5',
-          secondary: '#673AB',
-          accent: '#4CAF5',
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          primary: '#384AD7',
+          secondary: '#00ABFB',
+          accent: '#FFEB3B',
+          info: '#0571F7',
+          warning: '#FBAA00',
+          error: colors.deepOrange,
+          success: '#18A899'
         }
       }
     }

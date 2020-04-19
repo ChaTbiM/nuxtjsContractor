@@ -45,7 +45,7 @@
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-actions class="px-4">
-                  <v-btn large class="success" @click="submit">sign up</v-btn>
+                  <v-btn large class="success" @click="register">sign up</v-btn>
                   <v-spacer />
                   <v-btn large class="info"> reset</v-btn>
                 </v-card-actions>
@@ -80,6 +80,7 @@
 
 <script>
 export default {
+  middleware: 'guest',
   layout: 'auth',
   data() {
     return {
@@ -119,16 +120,22 @@ export default {
     validateForm() {
       return this.$refs.signUpForm.validate()
     },
-    submit() {
-      if (this.validateForm()) {
-        this.$axios
-          .post('/testlogin', {
-            name: this.form.name,
-            password: this.form.password,
-            email: this.form.email
-          })
-          .then((response) => console.log(response, 'response :) '))
-      }
+    async register() {
+      // if (this.validateForm()) {
+      //   this.$axios
+      //     .post('/testlogin', {
+      //       name: this.form.name,
+      //       password: this.form.password,
+      //       email: this.form.email
+      //     })
+      //     .then((response) => console.log(response, 'response :) '))
+      // }
+
+      this.$axios.post({ data: this.form })
+
+      await this.$auth.login({ data: this.form })
+
+      this.$router.push('/dashboard')
     }
   }
 }

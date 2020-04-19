@@ -1,7 +1,13 @@
 <template>
-  <v-app light>
+  <v-app>
     <v-content>
       <nuxt />
     </v-content>
   </v-app>
 </template>
+
+<script>
+export default {
+  name: 'LayoutsAuth'
+}
+</script>

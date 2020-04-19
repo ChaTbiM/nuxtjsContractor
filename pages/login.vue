@@ -46,7 +46,7 @@
                 <v-divider></v-divider>
 
                 <v-card-actions class="px-4">
-                  <v-btn block large class="success" @click="submit"
+                  <v-btn block large dark class="primary" @click="login"
                     >Log in</v-btn
                   >
                 </v-card-actions>
@@ -61,27 +61,24 @@
 
 <script>
 export default {
+  middleware: 'guest',
   layout: 'auth',
   data() {
     return {
       showPassword: false,
       form: {
-        email: '',
-        password: ''
+        email: 'test1@gmail.com',
+        password: 'password'
       }
     }
   },
   methods: {
-    submit() {
+    async login() {
       //   if (this.validateForm()) {
-      this.$axios
-        .post('/testlogin', {
-          name: 'this.form.name',
-          password: 'this.form.password',
-          email: 'this.form.email'
-        })
-        .then((response) => console.log(response, 'login response :) '))
       //   }
+
+      await this.$auth.login({ data: this.form })
+      this.$router.push('/dashboard')
     }
   }
 }
