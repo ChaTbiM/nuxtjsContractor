@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar flat app>
+  <v-toolbar flat>
     <!-- color="" -->
     <!-- -->
     <v-toolbar-title to="/" nuxt>Logo</v-toolbar-title>
