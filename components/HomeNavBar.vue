@@ -28,7 +28,7 @@
       >
     </v-toolbar>
     <div v-if="shown">
-      <v-card class="mx-auto" width="256">
+      <v-card class="mx-auto d-sm-none" width="256">
         <v-navigation-drawer class="deep-purple accent-4" dark permanent>
           <v-list>
             <v-list-item
@@ -63,7 +63,7 @@
 export default {
   name: 'HomeNavBar',
   data: () => ({
-    shown: true,
+    shown: false,
     items: [
       { title: 'pricing', url: '/pricing' },
       { title: 'about us', url: '/about' }
@@ -72,10 +72,6 @@ export default {
   methods: {
     showMenu() {
       this.shown = !this.shown
-    },
-    redirect(url) {
-      // console.log(url, 'urlll')
-      this.$router.push(url)
     }
   }
 }
