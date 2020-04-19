@@ -44,10 +44,14 @@
                   </v-form>
                 </v-card-text>
                 <v-divider></v-divider>
-                <v-card-actions class="px-4">
-                  <v-btn large class="success" @click="register">sign up</v-btn>
+                <v-card-actions class="px-4 ">
+                  <v-btn large class="primary px-6 px-sm-12" @click="register"
+                    >sign up</v-btn
+                  >
                   <v-spacer />
-                  <v-btn large class="info"> reset</v-btn>
+                  <v-btn large class="secondary" @click="resetForm">
+                    reset</v-btn
+                  >
                 </v-card-actions>
               </v-card>
             </v-col>
@@ -124,6 +128,9 @@ export default {
   methods: {
     validateForm() {
       return this.$refs.signUpForm.validate()
+    },
+    resetForm() {
+      this.$refs.form.reset()
     },
     async register() {
       if (this.validateForm()) {
