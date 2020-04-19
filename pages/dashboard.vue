@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>dashaboard content</h1>
-    <p>{{ user }}</p>
+    <p>welcome {{ user.name }}</p>
 
     <v-btn @click.prevent="logout">Logout</v-btn>
   </div>
@@ -11,9 +11,6 @@
 export default {
   middleware: 'auth',
   layout: 'dashboard',
-  mounted() {
-    console.log('store', this.$store)
-  },
   methods: {
     async logout() {
       await this.$auth.logout()

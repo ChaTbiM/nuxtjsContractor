@@ -67,8 +67,8 @@ export default {
     return {
       showPassword: false,
       form: {
-        email: 'test1@gmail.com',
-        password: 'password'
+        email: '',
+        password: ''
       }
     }
   },
